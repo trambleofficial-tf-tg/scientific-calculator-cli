@@ -1,0 +1,11 @@
+# Scientific Calculator - Enhanced Edition v2.0
+# No external dependencies required
+# Uses only Python Standard Library
+
+# Python Version Required: 3.6+
+
+# Standard Library Modules Used:
+# - math (mathematical functions)
+# - datetime (timestamp for history)
+# - sys (system operations)
+# - os (operating system interface)
