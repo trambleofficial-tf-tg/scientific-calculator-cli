@@ -87,3 +87,40 @@ def hex_to_dec(hex_str):
         return int(hex_str, 16)
     except ValueError:
         raise ValueError("Invalid hexadecimal number")
+
+def standard_deviation(numbers):
+    """Calculate standard deviation"""
+    if len(numbers) < 2:
+        raise ValueError("Need at least 2 numbers for standard deviation")
+    avg = mean(numbers)
+    variance = sum((x - avg) ** 2 for x in numbers) / len(numbers)
+    return math.sqrt(variance)
+
+def variance(numbers):
+    """Calculate variance"""
+    if len(numbers) < 2:
+        raise ValueError("Need at least 2 numbers for variance")
+    avg = mean(numbers)
+    return sum((x - avg) ** 2 for x in numbers) / len(numbers)
+
+def matrix_add(m1, m2):
+    """Add two 2x2 matrices"""
+    if len(m1) != 2 or len(m2) != 2:
+        raise ValueError("Matrices must be 2x2")
+    return [[m1[i][j] + m2[i][j] for j in range(2)] for i in range(2)]
+
+def matrix_multiply(m1, m2):
+    """Multiply two 2x2 matrices"""
+    if len(m1) != 2 or len(m2) != 2:
+        raise ValueError("Matrices must be 2x2")
+    result = [[0, 0], [0, 0]]
+    for i in range(2):
+        for j in range(2):
+            result[i][j] = m1[i][0] * m2[0][j] + m1[i][1] * m2[1][j]
+    return result
+
+def matrix_determinant(m):
+    """Calculate determinant of 2x2 matrix"""
+    if len(m) != 2:
+        raise ValueError("Matrix must be 2x2")
+    return m[0][0] * m[1][1] - m[0][1] * m[1][0]

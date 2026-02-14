@@ -1,5 +1,6 @@
 """Calculation history management module"""
 from datetime import datetime
+import os
 
 calculation_history = []
 
@@ -55,3 +56,24 @@ def clear_history():
 def get_history():
     """Return the calculation history"""
     return calculation_history
+
+def export_history(filename="calculator_history.txt"):
+    """Export history to a text file"""
+    if not calculation_history:
+        raise ValueError("No history to export")
+    
+    try:
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write("="*60 + "\n")
+            f.write("Scientific Calculator - Calculation History\n")
+            f.write(f"Exported: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write("="*60 + "\n\n")
+            
+            for i, entry in enumerate(calculation_history, 1):
+                f.write(f"{i}. [{entry['timestamp']}]\n")
+                f.write(f"   Operation: {entry['operation']}\n")
+                f.write(f"   Result: {entry['result']}\n\n")
+        
+        return filename
+    except Exception as e:
+        raise ValueError(f"Failed to export history: {str(e)}")
